@@ -24,8 +24,12 @@ client.on('messageCreate', (message) =>{
     }
 });
 
-client.on('voiceStateUpdate', (vc) => {
-    console.log(vc);
+client.on('interactionCreate', (interaction) => {
+    if (!interaction.isChatInputCommand()) return;
+
+    if (interaction.commandName === 'check') {
+        interaction.reply('Все системы работают.');
+    }
 });
 
 client.login(process.env.TOKEN);
